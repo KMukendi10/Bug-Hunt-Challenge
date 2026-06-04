@@ -8,8 +8,8 @@ const taskList = document.getElementById('task-list');
 const statsEl = document.getElementById('stats');
 const filterBtns = document.querySelectorAll('.filters button');
 
-
-addBtn.addEventListener('mouseover', function () {
+//Mukelani - Change the mousehover effect on the add button to "click"
+addBtn.addEventListener('click', function () {
   const text = taskInput.value.trim();
   if (text === '') return;
   addTask(text);
