@@ -8,8 +8,8 @@ const taskList = document.getElementById('task-list');
 const statsEl = document.getElementById('stats');
 const filterBtns = document.querySelectorAll('.filters button');
 
-
-addBtn.addEventListener('mouseover', function () {
+//Mukelani - Change the mousehover effect on the add button to "click"
+addBtn.addEventListener('click', function () {
   const text = taskInput.value.trim();
   if (text === '') return;
   addTask(text);
@@ -39,15 +39,15 @@ function addTask(text) {
 
 
 function toggleTask(id) {
-  tasks = tasks.map(function (id) {
-    if (id.id === id) {
-      return { ...id, completed: !id.completed };
+  tasks = tasks.map(function (task) {
+    if (task.id === id) {
+      return { ...task, completed: !task.completed };
     }
-    return id;
+    return task;
   });
 
   renderTasks();
-}
+} // Kazadi - Renamed to task for clearer comparison with the task ID
 
 
 function deleteTask(id) {
@@ -62,7 +62,7 @@ function getFilteredTasks() {
   if (currentFilter === 'active') {
     return tasks.filter(function (task) {
       return task.completed === false;
-    });
+    });//Ricardo Ngozo filter change
   }
 
   if (currentFilter === 'completed') {
@@ -105,7 +105,7 @@ function renderTasks() {
     deleteBtn.className = 'delete-btn';
     deleteBtn.textContent = '×';
     deleteBtn.addEventListener('click', function (event) {
-      deleteTask(event.target.id);
+      deleteTask(task.id);//fixed the delete button not working by adding the correct id to deleteTask
     });
 
     li.appendChild(checkbox);
