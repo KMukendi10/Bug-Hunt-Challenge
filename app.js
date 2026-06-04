@@ -96,12 +96,14 @@ function renderTasks() {
     span.className = 'task-text';
     span.textContent = task.text;
 
-    const deleteBtn = document.createElement('button');
-    deleteBtn.className = 'delete-btn';
-    deleteBtn.textContent = '×';
-    deleteBtn.addEventListener('click', function (event) {
-      deleteTask(event.target.id);
-    });
+   // Updated by Ricardo Ngozo: fixed delete logic by removing event.target.id (which was undefined)
+// and improving reliability of task deletion handling
+  const deleteBtn = document.createElement('button');
+  deleteBtn.className = 'delete-btn';
+  deleteBtn.textContent = '×';
+  deleteBtn.addEventListener('click', function () {
+  deleteTask(task.id);
+});
 
     li.appendChild(checkbox);
     li.appendChild(span);
