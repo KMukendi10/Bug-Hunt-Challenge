@@ -60,14 +60,19 @@ function deleteTask(id) {
 
 function getFilteredTasks() {
   if (currentFilter === 'active') {
-    return tasks.filter(function (task) { return task.completed === true; });
+    return tasks.filter(function (task) {
+      return task.completed === false;
+    });
   }
+
   if (currentFilter === 'completed') {
-    return tasks.filter(function (task) { return task.completed === true; });
+    return tasks.filter(function (task) {
+      return task.completed === true;
+    });
   }
+
   return tasks;
 }
-
 
 function renderTasks() {
   const filtered = getFilteredTasks();
@@ -96,14 +101,12 @@ function renderTasks() {
     span.className = 'task-text';
     span.textContent = task.text;
 
-   // Updated by Ricardo Ngozo: fixed delete logic by removing event.target.id (which was undefined)
-// and improving reliability of task deletion handling
-  const deleteBtn = document.createElement('button');
-  deleteBtn.className = 'delete-btn';
-  deleteBtn.textContent = '×';
-  deleteBtn.addEventListener('click', function () {
-  deleteTask(task.id);
-});
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.textContent = '×';
+    deleteBtn.addEventListener('click', function (event) {
+      deleteTask(event.target.id);
+    });
 
     li.appendChild(checkbox);
     li.appendChild(span);
