@@ -60,14 +60,19 @@ function deleteTask(id) {
 
 function getFilteredTasks() {
   if (currentFilter === 'active') {
-    return tasks.filter(function (task) { return task.completed === false; });
+    return tasks.filter(function (task) {
+      return task.completed === false;
+    });//Ricardo Ngozo filter change
   }
+
   if (currentFilter === 'completed') {
-    return tasks.filter(function (task) { return task.completed === true; });
+    return tasks.filter(function (task) {
+      return task.completed === true;
+    });
   }
+
   return tasks;
 }
-
 
 function renderTasks() {
   const filtered = getFilteredTasks();
