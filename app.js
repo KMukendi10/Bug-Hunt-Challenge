@@ -39,15 +39,15 @@ function addTask(text) {
 
 
 function toggleTask(id) {
-  tasks = tasks.map(function (id) {
-    if (id.id === id) {
-      return { ...id, completed: !id.completed };
+  tasks = tasks.map(function (task) {
+    if (task.id === id) {
+      return { ...task, completed: !task.completed };
     }
-    return id;
+    return task;
   });
 
   renderTasks();
-}
+} // Kazadi - Renamed to task for clearer comparison with the task ID
 
 
 function deleteTask(id) {
