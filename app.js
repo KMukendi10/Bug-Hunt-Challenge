@@ -100,7 +100,7 @@ function renderTasks() {
     deleteBtn.className = 'delete-btn';
     deleteBtn.textContent = '×';
     deleteBtn.addEventListener('click', function (event) {
-      deleteTask(event.target.id);
+      deleteTask(task.id);//fixed the delete button not working by adding the correct id to deleteTask
     });
 
     li.appendChild(checkbox);
